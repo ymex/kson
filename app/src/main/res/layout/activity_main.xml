@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="cn.ymex.demo.MainActivity"
+    android:orientation="vertical">
+
+
+    <EditText
+        android:id="@+id/etInput"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="alias:data->income[0][3][0]->day"
+        android:gravity="center"
+        android:layout_marginRight="8dp"
+        android:layout_marginLeft="8dp"
+        android:textAllCaps="false"
+        android:layout_marginTop="8dp" />
+
+    <Button
+        android:id="@+id/btn02"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="8dp"
+        android:layout_marginRight="8dp"
+        android:layout_marginTop="8dp"
+        android:text="SEARCH"
+        android:textAllCaps="false" />
+
+
+    <TextView
+        android:id="@+id/tvShow"
+        android:layout_marginLeft="8dp"
+        android:layout_marginRight="8dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:text="result" />
+</LinearLayout>

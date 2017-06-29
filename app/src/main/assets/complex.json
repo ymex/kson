@@ -1,0 +1,42 @@
+{
+    "message": "ok",
+    "code": 200,
+    "data": {
+        "person": {
+            "name": "li",
+            "age": 23,
+            "income": 2.333,
+            "hascat": false,
+            "parent": {
+                "mather": {
+                    "name": "tom",
+                    "age": 46
+                },
+                "father": {
+                    "name": "li tom",
+                    "age": 46
+                }
+            }
+        },
+        "income": [
+            [
+                [{ "day": "11", "money": "111" }, { "day": "12", "money": "222" }],
+                [{ "day2": "11", "money2": "22111" }, { "day2": "212", "money": "2222" }],
+                [{ "day3": "141", "money3": "1411" }, { "day3": "142", "money3": "2242" }],
+                [{ "day": 1641, "money": 123411 }, { "day": "12", "money": "222" }]
+
+            ],
+            [
+                { "day212": "1k1", "money22": "221hgdf11" },
+                { "day232": "21jfh2", "money22": "22asdf22" },
+                { "day242": "11hg", "money22": "2sdf2111" },
+                { "day252": "21k2", "money22": "222ds2" },
+                { "day262": "1ly1", "money22": "22111sd" },
+                { "day272": "21lgu2", "money22": "22dfa22" }
+            ], {
+                "bb272": "21asdlgu2",
+                "bbney22": "22dasdfasdfa22"
+            }
+        ]
+    }
+}

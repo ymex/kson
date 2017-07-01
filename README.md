@@ -1,4 +1,4 @@
-# documentation
+# documentation[中文说明](https://github.com/ymex/kson/blob/master/README-zh.md)
 -------------------------
 Used for convenient parsing and searching of JSON strings, not a serialized or serialized JSON library. For complex JSON, we just need one of them
 A section of JSON, which is convenient for gson and fastjson serialization, reduces the definition of an unrelated Bean class.

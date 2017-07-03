@@ -18,7 +18,9 @@
 如，"result->books[2]->title" 表示查找 result 对象下数组books 的第二个元素对象的title.
 
 ##使用
-
+```
+compile 'cn.ymex.kson:kson:1.0.0'
+```
 
 ```
 int money  = Kson.stream(json).find("day:data->income[0][3][0]->day").get().Int();

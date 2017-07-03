@@ -1,6 +1,8 @@
 #说明文档
 -------------------------
 
+[ ![Download](https://api.bintray.com/packages/ymex/maven/kson/images/download.svg) ](https://bintray.com/ymex/maven/kson/_latestVersion)
+
 用于便捷解析和查找json 字串， 不是一个序列化或返序列化的json库。对于复杂的json而恰好我们只需要其中某
 一段json，方便用于gson,fastjson反序列化而减少无关Bean类的定义。
 

@@ -1,3 +1,7 @@
+# Kson: quick look 
+--------------------------
+
+[ ![Download](https://api.bintray.com/packages/ymex/maven/kson/images/download.svg) ](https://bintray.com/ymex/maven/kson/_latestVersion)
 
 Used for convenient parsing and searching of JSON strings, not a serialized or serialized JSON library. For complex JSON, we just need one of them
 A section of JSON, which is convenient for gson and fastjson serialization, reduces the definition of an unrelated Bean class.
@@ -20,6 +24,10 @@ The use of `->` to find multi.
 For example, `result->books[2]->title` means the title. of the second element object of the array books under the result object
 
 ##Use
+```
+compile 'cn.ymex.kson:kson:1.0.0'
+```
+
 
 ```
 int money  = Kson.stream(json).find("day:data->income[0][3][0]->day").get().Int();

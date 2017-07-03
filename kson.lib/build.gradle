@@ -47,7 +47,7 @@ task androidJavadocs(type: Javadoc) {
 
 publish {
     userOrg = 'ymex'
-    groupId = 'cn.ymex'
+    groupId = 'cn.ymex.kson'
     artifactId = 'kson'
     publishVersion = '1.0.0'
     desc = 'Used for convenient parsing and searching of JSON strings, not a serialized or serialized JSON library.'

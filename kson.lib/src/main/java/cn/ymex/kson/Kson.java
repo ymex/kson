@@ -13,7 +13,8 @@ import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 /**
- * Created by ymex@foxmail.com on 2017/6/28.
+ * Created by ymex@foxmail.com
+ * 2017/6/28.
  */
 
 public final class Kson {
@@ -32,6 +33,30 @@ public final class Kson {
         this.keys = new ArrayList<>();
     }
 
+    /**
+     * reset json resource
+     * @param json
+     * @return
+     */
+    public Kson  json(final String json) {
+         this.json = json;
+        return this;
+    }
+
+    /**
+     * find the value of the existing keys
+     * @return
+     */
+    public  Kson refind() {
+        return this.find((String[]) keys.toArray(new String[keys.size()]));
+    }
+
+
+    /**
+     * Kson instance
+     * @param json
+     * @return
+     */
     public static Kson stream(final String json) {
         if (null == json || json.length() <= 0) {
             throw new RuntimeException("kson stream value not allow null or empty!");
@@ -39,6 +64,12 @@ public final class Kson {
         return new Kson(json);
     }
 
+    /**
+     * find the value of keys
+     * not allow null or empty
+     * @param keys
+     * @return
+     */
     public Kson find(String... keys) {
 
         if (keys == null || keys.length <= 0) {
@@ -47,6 +78,9 @@ public final class Kson {
         clear();
         this.keys.addAll(Arrays.asList(keys));
         for (String key : keys) {
+            if (null == key || key.length() <= 0) {
+                continue;
+            }
             parseLink(key);
         }
         return this;
@@ -88,7 +122,7 @@ public final class Kson {
     }
 
     private Object parse(String json, String key) throws JSONException {
-        Object obresult = null;
+        Object obResult = null;
         List<Integer> indexes = getMutArrayIndexs(key);
         if (isArrayKey(indexes.size(), key)) {
             String arrayName = getMutArrayName(key);
@@ -100,29 +134,40 @@ public final class Kson {
             }
             for (int index = 0; index < indexes.size(); index++) {
                 if (index == indexes.size() - 1) {
-                    obresult = jsonArray.opt(indexes.get(index));
+                    obResult = jsonArray.opt(indexes.get(index));
                 } else {
                     jsonArray = jsonArray.getJSONArray(indexes.get(index));
                 }
             }
-        } else {
-            JSONObject jsonObject = new JSONObject(json);
-            obresult = jsonObject.opt(key);
+            return obResult;
         }
-        return obresult;
+        return new JSONObject(json).opt(key);
     }
 
-    //判断key 是否是数组key
+    /**
+     * 判断key 是否是数组key
+     * @param indexs
+     * @param key
+     * @return
+     */
     private boolean isArrayKey(int indexs, String key) {
         return indexs >= 1 && key.endsWith("]");
     }
 
-    //获取数组名
+    /**
+     * 获取数组名
+     * @param key
+     * @return
+     */
     private String getMutArrayName(String key) {
         return key.substring(0, key.indexOf("["));
     }
 
-    //获取[] 中的数字。
+    /**
+     * 获取[] 中的数字
+     * @param managers
+     * @return
+     */
     private List<Integer> getMutArrayIndexs(String managers) {
         List<Integer> ls = new ArrayList<>();
         Pattern pattern = Pattern.compile("(?<=\\[)(.+?)(?=\\])");
@@ -150,29 +195,47 @@ public final class Kson {
         return key.substring(0, index);
 
     }
-
+    /**
+     * get the first value in the array of keys
+     * @return
+     */
     public KsonHelper get() {
         return getfirst();
     }
 
+    /**
+     * get the first value in the array of keys
+     * @return
+     */
     public KsonHelper getfirst() {
         checkKeys();
         return get(realKey(keys.get(0)));
     }
 
+    /**
+     * get the last value in the array of keys
+     * @return
+     */
     public KsonHelper getlast() {
         checkKeys();
         return get(realKey(keys.get(keys.size() - 1)));
     }
 
+    /**
+     * get the value of key
+     * @param key
+     * @return
+     */
     public KsonHelper get(String key) {
-        if (key == null || key.length() <= 0) {
-            throw new RuntimeException("kson get() value not allow null or empty!");
-        }
         checkKeys();
         return new KsonHelper(arrayMap.get(key));
     }
 
+    /**
+     * get the value of key by array index
+     * @param index
+     * @return
+     */
     public KsonHelper get(int index) {
         checkKeys();
         if (index < 0 || index >= keys.size()) {
@@ -181,6 +244,10 @@ public final class Kson {
         return get(keys.get(index));
     }
 
+    /**
+     * get all values
+     * @return
+     */
     public ArrayMap<String, Object> getall() {
         ArrayMap<String, Object> map = new ArrayMap<>(this.arrayMap.size());
         for (String key : this.arrayMap.keySet()) {
@@ -194,7 +261,6 @@ public final class Kson {
             throw new RuntimeException("please call kson find(...) func first before call get()!");
         }
     }
-
 }
 
 

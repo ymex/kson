@@ -57,11 +57,20 @@ public final class Kson {
      * @param json
      * @return
      */
-    public static Kson stream(final String json) {
+    public static Kson unmarshal(final String json) {
         if (null == json || json.length() <= 0) {
-            throw new RuntimeException("kson stream value not allow null or empty!");
+            throw new RuntimeException("kson unmarshal value not allow null or empty!");
         }
         return new Kson(json);
+    }
+
+    /**
+     * @deprecated
+     * @param json
+     * @return
+     */
+    public static Kson stream(final String json) {
+        return unmarshal(json);
     }
 
     /**

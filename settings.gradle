@@ -1,1 +1,1 @@
-include ':app', ':kson.lib'
+include ':app', ':kson'

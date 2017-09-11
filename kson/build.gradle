@@ -8,8 +8,8 @@ android {
     defaultConfig {
         minSdkVersion 10
         targetSdkVersion 25
-        versionCode 1
-        versionName "1.0"
+        versionCode 5
+        versionName "1.2.0"
 
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
 
@@ -47,9 +47,9 @@ task androidJavadocs(type: Javadoc) {
 
 publish {
     userOrg = 'ymex'
-    groupId = 'cn.ymex.kson'
+    groupId = 'cn.ymex'
     artifactId = 'kson'
-    publishVersion = '1.0.0'
+    publishVersion = '1.2.0'
     desc = 'Used for convenient parsing and searching of JSON strings, not a serialized or serialized JSON library.'
     website = 'https://github.com/ymex/kson'
 }

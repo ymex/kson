@@ -6,7 +6,6 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
-import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
 
@@ -16,7 +15,6 @@ import java.io.InputStreamReader;
 import java.io.Reader;
 
 import cn.ymex.kson.Kson;
-import cn.ymex.kson.KsonHelper;
 
 public class MainActivity extends AppCompatActivity {
     private TextView tvShow;
@@ -33,13 +31,13 @@ public class MainActivity extends AppCompatActivity {
         @Override
         public void onClick(View v) {
             String key = etInput.getText().toString().trim();
-            String result = Kson.stream(json).find(key).get().string();
+            String result = Kson.unmarshal(json).find(key).get().string();
             tvShow.setText(result);
         }
     };
 
     private void logfordemo() {
-        Kson kson = Kson.stream(json)
+        Kson kson = Kson.unmarshal(json)
                 .find("message",
                         "result:code",
                         "man:data->person->age",

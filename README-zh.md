@@ -19,13 +19,13 @@
 
 ##使用
 ```
-compile 'cn.ymex.kson:kson:1.0.0'
+compile 'cn.ymex:kson:1.2.0'
 ```
 
 ```
-int money  = Kson.stream(json).find("day:data->income[0][3][0]->day").get().Int();
+int money  = Kson.unmarshal(json).find("day:data->income[0][3][0]->day").get().Int();
 
-Kson kson = Kson.stream(json)
+Kson kson = Kson.unmarshal(json)
         .find("message", 
                 "result:data", 
                 "man:data->person", 

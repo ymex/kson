@@ -25,7 +25,7 @@ For example, `result->books[2]->title` means the title. of the second element ob
 
 ##Use
 ```
-compile 'cn.ymex.kson:kson:1.0.0'
+compile 'cn.ymex:kson:1.2.0'
 ```
 
 

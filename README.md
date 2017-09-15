@@ -27,7 +27,7 @@ For example, `result->books[2]->title` means the title. of the second element ob
 ```
 compile 'cn.ymex:kson:1.2.0'
 ```
-[json source ](https://github.com/ymex/kson/blob/master/app/src/main/assets/complex.json)
+json 的数据源可点击 查看：[json source ](https://github.com/ymex/kson/blob/master/app/src/main/assets/complex.json)
 
 ```
 int money  = Kson.unmarshal(json).find("day:data->income[0][3][0]->day").get().Int();

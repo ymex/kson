@@ -23,7 +23,7 @@ The use of `[]` search array
 The use of `->` to find multi.
 For example, `result->books[2]->title` means the title. of the second element object of the array books under the result object
 
-##Use
+## Use
 ```
 compile 'cn.ymex:kson:1.2.0'
 ```
@@ -34,9 +34,7 @@ int money  = Kson.unmarshal(json).find("day:data->income[0][3][0]->day").get().I
 
 Kson kson = Kson.unmarshal(json)
         .find("message", 
-                "result:data", 
-                "man:data->person", 
-                "day:data->income[0][3][0]->day");
+                "result:data", "man:data->person",  "day:data->income[0][3][0]->day");
 
 String message = kson.getfirst().string();
 String result = kson.get("result").string();//等价 kson.get("data").string()

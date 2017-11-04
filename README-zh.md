@@ -1,4 +1,4 @@
-#说明文档
+# 说明文档
 -------------------------
 
 [ ![Maven Central](https://api.bintray.com/packages/ymex/maven/kson/images/download.svg) ](https://bintray.com/ymex/maven/kson/_latestVersion)
@@ -30,10 +30,7 @@ json 的数据源可点击 查看：[json source ](https://github.com/ymex/kson/
 int money  = Kson.unmarshal(json).find("day:data->income[0][3][0]->day").get().Int();
 
 Kson kson = Kson.unmarshal(json)
-        .find("message", 
-                "result:data", 
-                "man:data->person", 
-                "day:data->income[0][3][0]->day");
+        .find("message", "result:data", "man:data->person", "day:data->income[0][3][0]->day");
 
 String message = kson.getfirst().string();
 String result = kson.get("result").string();//等价 kson.get("data").string()
@@ -41,9 +38,9 @@ int day = kson.getlast().Int();
 
 ```
 
-##注意
+## 注意
 每次调用`find()`方法时上次查找的结果集将会清空。 若要保存结果，你可以调用getall()方法， 获得查询的结果集。
 
-##最佳实践
+## 最佳实践
 若查找多个元素，最好的实践是每次查找两个，这样使用 `getfirst()`和`getlast()`方法就可以获取全部的查询结果。
 避免使用`get(key)`方法,因为你写key 时可能 出现拼写错误。

@@ -6,6 +6,11 @@ import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStream;
+import java.io.InputStreamReader;
+import java.io.Reader;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
@@ -35,25 +40,28 @@ public final class Kson {
 
     /**
      * reset json resource
+     *
      * @param json
      * @return
      */
-    public Kson  json(final String json) {
-         this.json = json;
+    public Kson json(final String json) {
+        this.json = json;
         return this;
     }
 
     /**
      * find the value of the existing keys
+     *
      * @return
      */
-    public  Kson refind() {
+    public Kson refind() {
         return this.find((String[]) keys.toArray(new String[keys.size()]));
     }
 
 
     /**
      * Kson instance
+     *
      * @param json
      * @return
      */
@@ -65,9 +73,30 @@ public final class Kson {
     }
 
     /**
-     * @deprecated
+     * Kson instance
+     *
+     * @param inputStream
+     * @return Kson
+     */
+    public static Kson unmarshal(InputStream inputStream) {
+        BufferedReader in = new BufferedReader(new InputStreamReader(inputStream));
+        String line;
+        StringBuilder builder = new StringBuilder();
+        try {
+            while ((line = in.readLine()) != null) {
+                builder.append(line);
+            }
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        return unmarshal(builder.toString());
+
+    }
+
+    /**
      * @param json
-     * @return
+     * @return Kson
+     * @deprecated
      */
     public static Kson stream(final String json) {
         return unmarshal(json);
@@ -76,6 +105,7 @@ public final class Kson {
     /**
      * find the value of keys
      * not allow null or empty
+     *
      * @param keys
      * @return
      */
@@ -155,6 +185,7 @@ public final class Kson {
 
     /**
      * 判断key 是否是数组key
+     *
      * @param indexs
      * @param key
      * @return
@@ -165,6 +196,7 @@ public final class Kson {
 
     /**
      * 获取数组名
+     *
      * @param key
      * @return
      */
@@ -174,6 +206,7 @@ public final class Kson {
 
     /**
      * 获取[] 中的数字
+     *
      * @param managers
      * @return
      */
@@ -204,34 +237,55 @@ public final class Kson {
         return key.substring(0, index);
 
     }
+
     /**
-     * get the first value in the array of keys
      * @return
+     * @deprecated get the first value in the array of keys
      */
     public KsonHelper get() {
         return getfirst();
     }
 
     /**
-     * get the first value in the array of keys
-     * @return
+     * @return KsonHelper
+     * @deprecated get the first value in the array of keys
      */
     public KsonHelper getfirst() {
+        return getFirst();
+    }
+
+    /**
+     * get the first value in the array of keys
+     *
+     * @return
+     */
+    public KsonHelper getFirst() {
         checkKeys();
         return get(realKey(keys.get(0)));
     }
 
     /**
-     * get the last value in the array of keys
      * @return
+     * @deprecated get the last value in the array of keys
      */
     public KsonHelper getlast() {
+        return getLast();
+    }
+
+    /**
+     * get the last value in the array of keys
+     *
+     * @return
+     */
+    public KsonHelper getLast() {
         checkKeys();
         return get(realKey(keys.get(keys.size() - 1)));
     }
 
+
     /**
      * get the value of key
+     *
      * @param key
      * @return
      */
@@ -242,6 +296,7 @@ public final class Kson {
 
     /**
      * get the value of key by array index
+     *
      * @param index
      * @return
      */
@@ -255,9 +310,10 @@ public final class Kson {
 
     /**
      * get all values
+     *
      * @return
      */
-    public ArrayMap<String, Object> getall() {
+    public ArrayMap<String, Object> getAll() {
         ArrayMap<String, Object> map = new ArrayMap<>(this.arrayMap.size());
         for (String key : this.arrayMap.keySet()) {
             map.put(key, this.arrayMap.get(key));

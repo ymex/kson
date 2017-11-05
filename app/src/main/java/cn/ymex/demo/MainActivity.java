@@ -11,6 +11,7 @@ import android.widget.TextView;
 
 import java.io.BufferedReader;
 import java.io.IOException;
+import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.io.Reader;
 
@@ -37,15 +38,23 @@ public class MainActivity extends AppCompatActivity {
     };
 
     private void logfordemo() {
+//        InputStream streamJson = null;
+//        try {
+//            streamJson = getAssets().open("complex.json");
+//        } catch (IOException e) {
+//            e.printStackTrace();
+//        }
+//        Kson kson = Kson.unmarshal(streamJson)
+
         Kson kson = Kson.unmarshal(json)
                 .find("message",
                         "result:code",
                         "man:data->person->age",
                         "day:data->income[0][3][0]->day");
-//            String message = kson.getfirst().string();
+//            String message = kson.getFirst().string();
 //            String result = kson.get("result").string();//等价 kson.get("data").string()
-//            int day = kson.getlast().Int();
-        Log.d("Kson", kson.getall().toString());
+//            int day = kson.getLast().Int();
+        Log.d("Kson", kson.getAll().toString());
     }
 
     @Override
@@ -57,7 +66,6 @@ public class MainActivity extends AppCompatActivity {
         json = readTextFromAsets(this, "complex.json");
         logfordemo();
     }
-
 
 
     private String readTextFromAsets(Context context, String fileName) {

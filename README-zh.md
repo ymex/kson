@@ -32,9 +32,9 @@ int money  = Kson.unmarshal(json).find("day:data->income[0][3][0]->day").get().I
 Kson kson = Kson.unmarshal(json)
         .find("message", "result:data", "man:data->person", "day:data->income[0][3][0]->day");
 
-String message = kson.getfirst().string();
+String message = kson.getFirst().string();
 String result = kson.get("result").string();//等价 kson.get("data").string()
-int day = kson.getlast().Int();
+int day = kson.getLast().Int();
 
 ```
 

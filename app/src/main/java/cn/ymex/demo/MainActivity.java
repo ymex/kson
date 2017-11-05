@@ -32,7 +32,7 @@ public class MainActivity extends AppCompatActivity {
         @Override
         public void onClick(View v) {
             String key = etInput.getText().toString().trim();
-            String result = Kson.unmarshal(json).find(key).get().string();
+            String result = Kson.unmarshal(json).find(key).getFirst().string();
             tvShow.setText(result);
         }
     };

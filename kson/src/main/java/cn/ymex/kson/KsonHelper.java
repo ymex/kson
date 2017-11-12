@@ -304,4 +304,10 @@ public class KsonHelper {
         throw new NumberFormatException("val [" + val + "] is not a valid number.");
     }
 
+
+    @Override
+    public String toString() {
+        System.err.println("waring: KsonHelper toString()");
+        return val == null ? "null" : val.toString();
+    }
 }

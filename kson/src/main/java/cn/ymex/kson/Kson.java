@@ -96,7 +96,7 @@ public final class Kson {
     /**
      * @param json
      * @return Kson
-     * @deprecated
+     * @deprecated use unmarshal()
      */
     public static Kson stream(final String json) {
         return unmarshal(json);

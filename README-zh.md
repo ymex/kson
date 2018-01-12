@@ -22,7 +22,7 @@
 ## 使用
 
 ```
-compile 'cn.ymex:kson:1.2.0'
+compile 'cn.ymex:kson:1.2.1'
 ```
 
 json 的数据源可点击 查看：[json source ](https://github.com/ymex/kson/blob/master/app/src/main/assets/complex.json)

@@ -25,7 +25,7 @@ For example, `result->books[2]->title` means the title. of the second element ob
 
 ## Use
 ```
-compile 'cn.ymex:kson:1.2.0'
+compile 'cn.ymex:kson:1.2.1'
 ```
 json 的数据源可点击 查看：[json source ](https://github.com/ymex/kson/blob/master/app/src/main/assets/complex.json)
 
